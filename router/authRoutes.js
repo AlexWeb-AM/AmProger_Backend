@@ -7,5 +7,4 @@ authRouter.post('/login', login);
 authRouter.post('/register', register);
 authRouter.post('/verify-email',verifyEmail)
 
-
 export default authRouter;

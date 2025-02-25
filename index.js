@@ -5,6 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import authRouter from "./router/authRoutes.js";
+import userRoutes from "./router/userRoutes.js";
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
-
+app.use('/api/user',userRoutes)
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 });
