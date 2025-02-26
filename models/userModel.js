@@ -7,7 +7,10 @@ const userScheme = new mongoose.Schema({
     verifyOtp: { type: String, default: '' },
     isAccountVerifed: { type: Boolean, default: false },
     resetOtp: { type: String, default: '' },
-    routeId:{type:String,required:true}
+    routeId:{type:String,required:true},
+    posts:{type:Number,default:0},
+    likes:{type:Number,default:0},
+    savedPosts:{type:Array,default:[]}
 });
 
 const userModel = mongoose.model('user', userScheme);

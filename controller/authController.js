@@ -130,6 +130,8 @@ export const verifyEmail = async (req, res) => {
   try {
     const { email, otp } = req.body;
 
+    console.log(req.body)
+
     if (!email || !otp) {
       return res.status(400).json({ success: false, message: "Email or OTP are required" });
     }
@@ -151,6 +153,23 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
+export const logout = (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 0, 
+    });
 
+    return res.status(200).json({ success: true, message: "Logged out successfully" });
+  } catch (error) {
+    console.error("Error during logout:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Internal server error during logout",
+    });
+  }
+};
 
 
