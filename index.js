@@ -6,6 +6,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import authRouter from "./router/authRoutes.js";
 import userRoutes from "./router/userRoutes.js";
+import postRouter from "./router/postRoutes.js";
 
 dotenv.config();
 
@@ -30,6 +31,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use('/api/user',userRoutes)
+app.use('/api/post',postRouter)
+
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 });
